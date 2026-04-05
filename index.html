@@ -1,23 +1,482 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+  <!-- SEO 최적화 JSON-LD 스키마 -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "중고 외제차 유지비 완벽 분석 가이드",
+      "url": "https://yourdomain.com/used-foreign-car-maintenance-guide",
+      "description": "2026년 최신 기준으로 BMW, 벤츠, 아우디 등 인기 모델별 중고 외제차 유지비(보험료, 수리비, 부품 가격)를 상세히 비교 분석합니다. 합리적인 가격으로 외제차를 운용할 수 있는 팁과 전문가 추천 정보를 확인하세요.",
+      "mainEntity": {
+        "@type": "Article",
+        "headline": "중고 외제차 유지비 완벽 분석 가이드: 구매 전 필수 체크리스트",
+        "image": "https://images.pexels.com/photos/103568/pexels-photo-103568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "datePublished": "2026-03-15",
+        "author": {
+          "@type": "Person",
+          "name": "자동차가이드 전문가팀"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "중고차정보센터",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://yourdomain.com/logo.png"
+          }
+        },
+        "articleBody": "중고 외제차 유지비에 대한 모든 것을 알아봅니다. 2026년 최신 자료를 기반으로 보험, 세금, 수리비 등을 상세하게 비교 분석하여 현명한 선택을 돕습니다."
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "중고차 유지 관리 서비스",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "외제차 정비소 비교 견적"
+            },
+            "description": "전국 외제차 전문 정비소의 수리 비용 견적을 비교해 드립니다."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "수입차 보험료 비교 추천"
+            },
+            "description": "개인의 운전 경력과 차량 정보에 따른 최적의 보험료 비교 서비스를 제공합니다."
+          }
+        ]
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: #f0f4f8; /* 부드러운 배경색 */
+      color: #333;
+      word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
+    }
+    header {
+      background-color: #1a237e; /* 깊은 남색 */
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 0.5rem 0 1rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 1.2rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 2rem 0 0;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    nav a:hover {
+      color: #ffc107; /* 밝은 노란색 */
+      transform: translateY(-3px);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    main {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 0 2rem;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+    h2 {
+      color: #1a237e; /* 진한 남색 */
+      font-weight: 700;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-bottom: 3px solid #e0f0ff;
+      font-size: 2.2rem;
+    }
+    h3 {
+      color: #3949ab; /* 중간 남색 */
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      border-left: 5px solid #ffc107;
+      padding-left: 1rem;
+    }
+    h4 {
+      color: #5c6bc0; /* 연한 남색 */
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+    }
+    p {
+      text-align: justify;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 1.2rem;
+      border: 1px solid #e0e0e0;
+      text-align: center;
+    }
+    th {
+      background-color: #3949ab;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    tr:nth-child(even) {
+      background-color: #f8f8f8;
+    }
+    .callout {
+      background-color: #e8f5e9; /* 부드러운 초록색 배경 */
+      border-left: 5px solid #4caf50; /* 강조색 */
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .callout strong {
+      color: #388e3c;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #ff7043; /* 산뜻한 오렌지색 */
+      color: white;
+      font-weight: 700;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      margin: 2rem 0;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-align: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .cta-button:hover {
+      background-color: #e65100;
+      transform: translateY(-2px);
+    }
+    .keyword-tags {
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .keyword-tags a {
+      background-color: #e0f0ff;
+      color: #1a237e;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      border: 1px solid #c8e6c9;
+    }
+    .keyword-tags a:hover {
+      background-color: #c8e6c9;
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.95rem;
+      color: #777;
+      background-color: #e0eaf1;
+      margin-top: 3rem;
+      border-top: 1px solid #d0dbe4;
+    }
+    .external-link {
+      display: inline-block;
+      color: #1a237e;
+      font-weight: 500;
+      margin-top: 1rem;
+      text-decoration: underline;
+    }
+    .faq-item dt {
+      font-weight: 700;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      color: #1a237e;
+      background-color: #f5fafd;
+      padding: 1.2rem;
+      border-left: 5px solid #3f51b5;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .faq-item dt:hover {
+      background-color: #e8eaf6;
+      transform: translateY(-2px);
+    }
+    .faq-item dd {
+      margin: 0.5rem 0 1.5rem 1rem;
+      padding: 1.5rem;
+      border-left: 2px solid #ccc;
+      background-color: #fafafa;
+      border-radius: 4px;
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+    .faq-item dt.active + dd {
+      display: block;
+      opacity: 1;
+    }
+    .image-container {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .image-container img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .model-card {
+      background-color: #fcfcfc;
+      border: 1px solid #eee;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>중고 외제차 유지비 완벽 분석 가이드</h1>
+    <p>BMW, 벤츠, 아우디부터 포르쉐까지! 2026년 최신 기준으로 유지 비용을 투명하게 분석합니다.</p>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <ul>
+        <li><a href="#intro">가이드 소개</a></li>
+        <li><a href="#cost-analysis">유지비 구성요소 분석</a></li>
+        <li><a href="#model-comparison">인기 모델별 비교</a></li>
+        <li><a href="#tips">비용 절약 팁</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>중고 외제차, 꿈을 현실로 만드는 현명한 선택</h2>
+      <p>럭셔리한 디자인과 뛰어난 성능을 자랑하는 외제차는 많은 사람의 드림카입니다. 하지만 신차 가격은 부담스럽기에 중고차 시장을 선택하는 분들이 많습니다. **중고 외제차**는 초기 구매 비용을 크게 절감할 수 있다는 **장점**이 있지만, 막연한 **유지비** 걱정 때문에 망설이는 경우가 대부분입니다. 특히 '수리비 폭탄'이라는 말은 예비 오너들에게 큰 두려움을 줍니다. 본 가이드는 2026년 최신 데이터를 바탕으로 **중고 외제차 유지비**에 대한 막연한 불안감을 해소하고, 합리적인 **비용**으로 외제차를 운용할 수 있도록 돕기 위해 작성되었습니다. 이 글을 통해 여러분의 드림카를 현실로 만드는 데 도움이 되기를 바랍니다.</p>
+      <div class="callout">
+        <strong>💡 핵심 가이드:</strong> 중고 외제차는 신차 대비 **구매 가격**은 저렴하지만, **유지비**는 국산차 대비 높게 책정될 수 있습니다. 특히 **수리비**와 **보험료**는 모델에 따라 큰 **차이점**을 보이므로, 구매 전 충분한 **견적** 비교와 **분석**이 필수입니다.
+      </div>
+      <p>과거에는 외제차 정비가 까다롭고 부품 조달이 어려워 **수리 비용**이 과도하게 청구되는 경우가 많았습니다. 하지만 최근 몇 년 동안 수입차 시장이 성장하면서 전문 **업체**와 부품 **가격**이 다양해졌습니다. 이제는 **네이버**나 **구글** 검색을 통해 다양한 정비소 **후기**를 쉽게 찾을 수 있으며, **Gemini**나 **ChatGPT**와 같은 **AI** 에이전트에게 **예상 유지비**를 문의하여 정보를 얻는 것도 가능해졌습니다. 이 가이드는 이러한 변화에 맞춰 실제 **내돈내산** 오너들의 경험과 전문가 **추천** 정보를 종합하여 제공합니다.</p>
+
+      <div class="image-container">
+        <!-- Pexels.com에서 "used car maintenance" 또는 "foreign car repair"로 검색한 이미지 사용 -->
+        <img src="https://images.pexels.com/photos/103568/pexels-photo-103568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="중고 외제차 정비 및 유지보수">
+      </div>
+      
+      <div class="keyword-tags" aria-label="연관 검색 키워드">
+        <a href="#cost-analysis">외제차 수리비 평균</a>
+        <a href="#model-comparison">BMW 520d 유지비</a>
+        <a href="#model-comparison">벤츠 E클래스 유지비</a>
+        <a href="#model-comparison">포르쉐 유지비</a>
+        <a href="#tips">중고차 싸게 사는법</a>
+        <a href="#cost-analysis">수입차 보험료 비교</a>
+        <a href="#cost-analysis">중고 외제차 장단점</a>
+        <a href="#model-comparison">볼보 XC60 유지비</a>
+        <a href="#cost-analysis">2026 수입차 정비 가격</a>
+        <a href="#tips">중고차 매매 팁</a>
+        <a href="#model-comparison">아우디 A6 유지비</a>
+      </div>
+    </section>
+
+    <section id="cost-analysis">
+      <h2>중고 외제차 유지비 구성요소 상세 분석</h2>
+      <p><strong>중고 외제차 유지비</strong>는 단순히 기름값만으로 결정되지 않습니다. **보험료**, **세금**, **정비 비용**, 그리고 **소모품 교체 주기** 등 여러 요소를 종합적으로 고려해야 합니다. 특히 중고차는 신차 대비 부품 노후화로 인한 예상치 못한 **수리 비용**이 발생할 수 있으므로, 각 항목을 정확히 이해하는 것이 중요합니다.</p>
+
+      <h3>1. 보험료: 수입차는 정말 비쌀까?</h3>
+      <p>외제차의 **보험료**는 국산차 대비 높은 경향이 있습니다. 이는 차량 가액이 높고, 사고 발생 시 수입 부품 **가격**이 비싸 수리비가 높게 책정되기 때문입니다. 특히 **BMW 5시리즈**, **벤츠 E클래스**, **아우디 A6** 등 인기 모델은 도난 위험이 높아 보험료가 높을 수 있습니다. 하지만 운전자의 연령, 운전 경력, 사고 이력, 자차보험 가입 여부 등에 따라 보험료는 크게 달라집니다. <strong>20대 신규 가입자</strong>의 경우 **보험료**가 상당히 높을 수 있으므로, **할인** 혜택을 제공하는 여러 보험사의 **견적**을 비교해 보는 것이 필수입니다. **네이버**나 **구글** 검색을 통해 다양한 보험사 비교 플랫폼을 이용할 수 있습니다.</p>
+
+      <h3>2. 소모품 및 부품 가격: 국산차 대비 2~3배?</h3>
+      <p>가장 큰 부담으로 다가오는 부분은 소모품 및 부품 **가격**입니다. 외제차는 국산차와 달리 부품을 해외에서 수입해야 하므로 운송 및 유통 마진이 붙어 **비용**이 높습니다. 예를 들어, **BMW 520d**의 브레이크 패드 교체 비용은 국산차 대비 2배 이상 비쌀 수 있습니다. 특히 <strong>포르쉐 카이엔</strong>, <strong>벤츠 S클래스</strong>, <strong>BMW 7시리즈</strong>와 같은 플래그십 모델은 부품 **가격**이 상상을 초월합니다. 하지만 최근에는 **OEM 부품**이나 **애프터마켓 부품** 시장이 활성화되면서 순정 부품 대비 저렴하게 수리할 수 있는 **저렴한곳**이 많아지고 있습니다. **디시**인사이드나 **유튜브** 등 커뮤니티에서 정보를 얻어 **가성비** 좋은 **전문 업체**를 찾는 것이 중요합니다.</p>
+
+      <h3>3. 정비 인프라 및 기술력: 믿을 만한 전문 업체 찾기</h3>
+      <p>외제차 수리는 국산차와 달리 전문적인 기술력을 요구합니다. 특히 엔진 오일 교환과 같은 간단한 작업도 전용 진단 장비가 필요할 수 있습니다. 무허가 **업체**에서 수리받을 경우 오히려 차량에 문제가 생길 수 있으므로, 정식 **전문 업체**나 인증된 협력사를 이용하는 것이 좋습니다. 최근에는 **수입차 정비소 순위**를 제공하는 플랫폼이나 **후기**를 통해 믿을 수 있는 곳을 찾을 수 있습니다. 특히 <strong>볼보 XC60</strong>, <strong>렉서스 ES300h</strong>와 같이 비교적 정비 난이도가 낮은 모델이거나, <strong>폭스바겐 골프</strong>처럼 대중적인 모델은 상대적으로 **정비 비용** 부담이 적습니다.</p>
+
+      <h3>4. 유류비 및 세금: 연식에 따른 감가상각</h3>
+      <p>외제차는 고성능 모델이 많아 연비가 국산차 대비 낮을 수 있습니다. 특히 **포르쉐 마칸**이나 <strong>BMW X5</strong> 같은 고배기량 모델은 **유지비**에서 유류비가 차지하는 비중이 높습니다. 하지만 <strong>하이브리드 모델</strong>인 <strong>렉서스 ES300h</strong>나 <strong>벤츠 E300e</strong>는 연비가 뛰어나 유류비를 절감할 수 있습니다. 자동차세는 차량 배기량에 따라 책정되지만, 중고차는 연식에 따라 세금이 감가상각됩니다. 따라서 중고 외제차는 신차 대비 자동차세 **비용**이 상대적으로 저렴해진다는 **장점**이 있습니다.</p>
+
+      <!-- 그래프 삽입 위치 -->
+      <h3>중고 외제차 1년 예상 유지비 구성 비율 (평균)</h3>
+      <table aria-label="중고 외제차 1년 유지비 구성 비율">
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>비중 (%)</th>
+            <th>주요 항목</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>보험료 및 세금</td>
+            <td>30%</td>
+            <td>자동차 보험료, 자동차세</td>
+          </tr>
+          <tr>
+            <td>연료비</td>
+            <td>40%</td>
+            <td>휘발유/경유/전기 충전 비용</td>
+          </tr>
+          <tr>
+            <td>정비 및 소모품</td>
+            <td>30%</td>
+            <td>엔진 오일, 브레이크 패드, 타이어 교체, 고장 수리비</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=230635&efYd=20200805#0000" target="_blank" rel="noopener noreferrer" class="external-link">이사화물 표준약관 (참고: 정비 및 피해 보상 관련 법규 참고용)</a>
+    </section>
+
+    <section id="model-comparison">
+      <h2>인기 중고 외제차 모델별 유지비 비교 분석</h2>
+      <p>모든 외제차가 같은 **유지비**를 갖는 것은 아닙니다. 모델별로 **장단점**이 뚜렷하게 나뉘며, 부품 수급의 용이성, 차량의 내구성, 고질병 유무에 따라 **예상 유지비**가 크게 달라집니다. 아래에서는 2026년 기준으로 중고차 시장에서 인기가 높은 모델들의 **유지비** 특징을 상세하게 비교 분석해 드립니다.</p>
+
+      <h3>1. 독일 3사 (BMW, Mercedes-Benz, Audi)</h3>
+      <p>가장 대중적인 선택지인 **BMW**, **벤츠**, **아우디**는 중고차 시장에서 매물이 풍부하여 **가격**이 합리적으로 형성되어 있습니다. 하지만 모델별로 **유지비** 편차가 크고, 고질병을 잘 알고 구매해야 합니다.</p>
+      <div class="model-card">
+        <h4>BMW 5시리즈 (F10, G30) / BMW 3시리즈 (F30)</h4>
+        <p><strong>BMW 520d</strong>와 <strong>528i</strong>는 중고차 시장에서 가장 인기 있는 모델 중 하나입니다. <strong>장점</strong>은 뛰어난 주행 성능과 상대적으로 저렴한 중고 **가격**입니다. <strong>단점</strong>은 누유 문제와 전자기기 고장 빈도가 상대적으로 높다는 점입니다. 특히 <strong>BSI (BMW Service Inclusive)</strong>가 만료된 중고차는 꼼꼼한 점검이 필요하며, **수리 비용**이 높게 발생할 수 있습니다. <strong>BMW X3</strong>나 <strong>X5</strong> 같은 SUV 모델은 타이어 **교체 비용**과 브레이크 패드 **가격**이 세단보다 높다는 점을 염두에 두어야 합니다. **네이버**나 **구글**에서 'BMW 5시리즈 고질병'을 검색하면 많은 정보를 얻을 수 있습니다.</p>
+      </div>
+      <div class="model-card">
+        <h4>Mercedes-Benz E클래스 (W212, W213) / C클래스 (W205)</h4>
+        <p><strong>벤츠 E클래스</strong>는 우아한 디자인과 편안한 승차감으로 많은 사랑을 받습니다. 중고 **가격** 방어가 잘 되는 편이며, **C클래스**는 <strong>E클래스</strong> 대비 **유지비**가 저렴한 편입니다. <strong>단점</strong>은 부품 **가격**이 비싸다는 점입니다. 특히 <strong>E300</strong> 모델의 경우 엔진오일 교환만으로도 국산차의 2배가 넘는 **비용**이 발생할 수 있습니다. <strong>벤츠 GLC</strong>나 <strong>GLE</strong>와 같은 SUV 모델은 차체 크기 때문에 정비에 더 많은 **비용**이 필요합니다. <strong>신규 가입</strong>자를 위한 **할인** 혜택을 제공하는 **전문 업체**를 찾아보는 것이 좋습니다.</p>
+      </div>
+      <div class="model-card">
+        <h4>Audi A6 (C7) / A4 (B8)</h4>
+        <p><strong>아우디 A6</strong>는 세련된 디자인과 콰트로(Quattro) 시스템으로 유명합니다. 중고 **가격**이 상대적으로 저렴하여 가성비 좋은 선택지로 꼽힙니다. <strong>장점</strong>은 비교적 내구성이 좋다는 점이지만, <strong>단점</strong>은 변속기 고질병이나 전자 장치 문제가 발생할 수 있습니다. 특히 <strong>A4</strong>나 <strong>A6</strong>의 경우 <strong>A/S 기간</strong>이 만료된 중고차는 꼼꼼한 점검이 필요합니다. **A/S 전문 업체**의 **순위**나 **후기**를 참고하여 믿을 만한 곳에서 정비를 받는 것이 중요합니다.</p>
+      </div>
+
+      <h3>2. 기타 유럽 브랜드 (Porsche, Volvo, Mini Cooper)</h3>
+      <p>럭셔리 스포츠카 브랜드인 **포르쉐**와 안전의 대명사 **볼보**, 개성 강한 **미니쿠퍼**는 각기 다른 **유지비** 특징을 가집니다.</p>
+      <div class="model-card">
+        <h4>Porsche Cayenne / Macan</h4>
+        <p><strong>포르쉐 카이엔</strong>과 <strong>마칸</strong>은 고성능 SUV로 인기가 높습니다. 하지만 **유지비**는 다른 외제차 대비 훨씬 높습니다. 엔진 오일 교환 **비용**부터 브레이크 패드 교환 **가격**까지 모든 소모품이 비쌉니다. 특히 <strong>포르쉐</strong> 전문 **업체**를 찾지 않으면 **수리 비용**이 과도하게 청구될 수 있습니다. **장점**은 감가율이 상대적으로 낮다는 점이지만, **단점**은 엄청난 **유지비**입니다. **예상 유지비**를 꼼꼼히 계산하지 않고 구매하면 큰 부담으로 다가올 수 있습니다. **유튜브** 등에서 **내돈내산** 오너들의 **후기**를 꼭 확인해야 합니다.</p>
+      </div>
+      <div class="model-card">
+        <h4>Volvo XC90 / XC60</h4>
+        <p><strong>볼보 XC60</strong>와 <strong>XC90</strong>은 안전성과 북유럽 감성의 디자인으로 인기가 높습니다. <strong>볼보</strong>는 비교적 잔고장이 적고 내구성이 좋다는 **장점**이 있어 **유지비** 부담이 적은 편입니다. 특히 <strong>XC60</strong>은 국산차 대비 **유지비**가 크게 차이나지 않는다는 평가가 많습니다. 하지만 **공식 서비스센터**의 **예약**이 어렵고, 부품 수급 기간이 길 수 있다는 <strong>단점</strong>이 있습니다. **전문 업체**를 미리 알아두면 편리하게 정비할 수 있습니다. <strong>신규</strong>로 **가입**하는 고객을 위한 **할인** 혜택도 찾아볼 수 있습니다.</p>
+      </div>
+
+      <h3>3. 일본/미국 브랜드 (Lexus, Ford)</h3>
+      <p>일본 브랜드는 뛰어난 내구성과 잔고장이 적다는 **장점**으로 유명합니다. 미국 브랜드는 대배기량 모델이 많아 유류비 부담이 높습니다.</p>
+      <div class="model-card">
+        <h4>Lexus ES300h / RX</h4>
+        <p><strong>렉서스 ES300h</strong>는 하이브리드 모델로 압도적인 연비를 자랑합니다. 잔고장이 거의 없기로 유명하여 **유지비**가 국산차와 큰 **차이점**이 없는 수준입니다. <strong>장점</strong>은 정숙성과 뛰어난 내구성입니다. <strong>단점</strong>은 상대적으로 심심한 디자인과 높은 중고 **가격** 방어율입니다. <strong>렉서스</strong> 차량은 <strong>유지비</strong> 측면에서 가장 합리적인 선택지 중 하나로 꼽힙니다. **전문 업체**를 찾기 쉽고, 부품 **가격**도 비교적 저렴한 편입니다.</p>
+      </div>
+      <div class="model-card">
+        <h4>Ford Mustang / Jeep Wrangler</h4>
+        <p><strong>포드 머스탱</strong>이나 <strong>지프 랭글러</strong>는 개성이 뚜렷한 모델입니다. **머스탱**은 고성능 모델이라 유류비와 소모품 **가격**이 높은 편이며, **지프 랭글러**는 오프로드 특성상 특수 부품 **가격**이 비쌀 수 있습니다. 하지만 **포드**나 **지프**는 **부품 가격**이 독일 3사 대비 저렴한 경우도 많습니다. **디시**인사이드나 **유튜브** 등 커뮤니티에서 정보를 얻어 **가성비** 좋은 **전문 업체**를 찾는 것이 중요합니다.</p>
+      </div>
+      <p>이 외에도 **BMW 1시리즈**, **BMW 3GT**, **BMW 4시리즈**, **BMW X1**, **벤츠 A클래스**, **벤츠 CLA**, **벤츠 CLS**, **아우디 Q3**, **아우디 Q5**, **아우디 Q7**, **폭스바겐 티구안**, **폭스바겐 파사트**, **미니 쿠퍼S**, **푸조 3008**, **푸조 508**, **랜드로버 디스커버리 스포츠**, **재규어 XF** 등 다양한 모델들의 **유지비**는 차종별, 연식별로 큰 차이를 보입니다. 특히 2026년 이후에는 전기차 모델의 중고 **가격**이 변동될 수 있으므로, 최신 정보를 꾸준히 확인하는 것이 좋습니다.</p>
+      <a href="https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%20%EC%9C%A0%EC%A7%80%EB%B9%84" target="_blank" rel="noopener noreferrer" class="external-link">자동차 유지비에 대한 더 자세한 정보 (나무위키)</a>
+    </section>
+
+    <section id="tips">
+      <h2>중고 외제차 유지비 절약 및 현명한 구매 팁</h2>
+      <p>**중고 외제차 유지비**를 절약하려면 구매 시점부터 신중해야 합니다. 합리적인 **가격**으로 드림카를 구매하고, **유지비** 부담을 최소화할 수 있는 몇 가지 팁을 소개합니다.</p>
+
+      <h3>✅ 팁 1: 방문 견적은 필수, 정비 이력을 확인하세요!</h3>
+      <p>중고 외제차 구매 시 **방문 견적**은 필수입니다. 차량 상태를 직접 눈으로 확인하고, 시승을 통해 변속기나 엔진 상태를 파악해야 합니다. 가장 중요한 것은 **정비 이력**입니다. 정비 이력이 없는 차량은 잠재적인 **수리비 폭탄**을 안고 있을 가능성이 높습니다. **카히스토리**나 **K-Car**와 같은 중고차 매매 플랫폼을 통해 **보험 이력**을 확인하는 것도 좋습니다. 특히 **BMW 5시리즈**나 **벤츠 E클래스**처럼 대중적인 모델은 **내돈내산 후기**가 많으니 참고하여 **견적**을 비교해 보세요.</p>
+      <a href="https://www.kca.go.kr/home/main.do" target="_blank" rel="noopener noreferrer" class="external-link">한국소비자원 홈페이지 (중고차 관련 소비자 분쟁 해결 가이드)</a>
+
+      <h3>✅ 팁 2: 저렴한 부품을 찾아라! 애프터마켓 활용</h3>
+      <p>외제차의 **수리비**가 비싼 이유는 순정 부품 **가격**이 높기 때문입니다. 하지만 최근에는 **OEM 부품**이나 **애프터마켓 부품**을 이용하면 **가격**을 크게 절약할 수 있습니다. 예를 들어, **볼보 XC60**의 브레이크 패드는 순정 부품 대신 애프터마켓 부품을 사용하면 **비용**이 30~50% 절감될 수 있습니다. **전문 업체**를 통해 **OEM 부품**을 구매하여 정비하는 방법을 적극적으로 활용하세요.</p>
+
+      <h3>✅ 팁 3: 보험사 비교는 필수!</h3>
+      <p>외제차 **보험료**는 보험사별로 **차이점**이 큽니다. 특히 <strong>신규 가입</strong>자는 **할인** 혜택을 제공하는 보험사를 찾는 것이 중요합니다. **네이버**나 **구글** 검색을 통해 다양한 보험사 비교 플랫폼을 이용할 수 있습니다. <strong>신규 가입 혜택</strong>, **사은품**, **현금 지원** 등 다양한 프로모션을 확인하여 가장 저렴한 곳을 선택하세요. <strong>20대</strong> 오너라면 특히 **보험료** 절약을 위한 노력이 필요합니다.</p>
+      <a href="https://www.fss.or.kr/fss/main/index.jsp" target="_blank" rel="noopener noreferrer" class="external-link">금융감독원 (보험 관련 정보 및 가이드)</a>
+
+      <h3>✅ 팁 4: 고질병을 미리 숙지하세요!</h3>
+      <p>각 모델별로 고질병이 있습니다. 예를 들어, **BMW 520d**의 타이밍 체인 문제, <strong>벤츠 E클래스</strong>의 미션 오일 누유 문제 등은 중고차 구매 전 반드시 확인해야 합니다. 이러한 고질병을 미리 알고 구매하면 **수리 비용**을 **예상**하고 대비할 수 있습니다. **유튜브**나 **트위터**, **인스타그램** 등 SNS 채널에서도 많은 **후기**를 찾아볼 수 있습니다.</p>
+
+      <h3>✅ 팁 5: 정비소 순위 및 후기를 꼼꼼히 확인하세요!</h3>
+      <p>믿을 수 있는 **전문 업체**를 찾는 것이 **유지비** 절감의 핵심입니다. 정식 서비스센터는 **가격**이 비싸지만, **수리 비용**이 합리적이면서 기술력이 뛰어난 사설 **전문 업체**들이 많이 있습니다. **네이버** 지도나 **구글** 맵에서 **후기**를 확인하거나, **디시인사이드**나 **유튜브** 등 커뮤니티에서 **추천** 받은 **업체**를 선택하세요. 특히 **포르쉐 마칸**이나 **BMW X5** 등 고가 차량은 **전문 업체**의 기술력이 더욱 중요합니다. **Gemini**나 **ChatGPT**와 같은 **AI** 에이전트에게 **정비소 순위**를 문의하여 정보를 얻는 것도 좋은 방법입니다.</p>
+
+      <div class="callout">
+        <strong>⚡ 2026년 전기차 중고 시장 변화:</strong> 최근 전기차 모델인 <strong>테슬라 모델 3</strong>나 <strong>BMW i4</strong>의 중고 시장이 활성화되면서, 내연기관 중고 외제차 **유지비**에 대한 관심이 더욱 높아지고 있습니다. 전기차는 소모품 교체 주기가 길다는 **장점**이 있지만, 배터리 교체 **가격**이라는 큰 **단점**이 있습니다.
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false" class="active"><strong>Q. 중고 외제차 구매 시 꼭 확인해야 할 고질병은 무엇인가요?</strong></dt>
+          <dd>모델별로 고질병이 다릅니다. 예를 들어, **BMW F바디** 모델은 누유 문제와 전자기기 오작동이, **벤츠 W212 E클래스**는 미션오일 누유와 고무 부싱 경화가 흔합니다. **포르쉐 카이엔**은 에어 서스펜션 고장이 잦습니다. 구매 전 **네이버**나 **구글** 검색을 통해 해당 모델의 고질병 **후기**를 충분히 숙지하고 점검해야 합니다. <strong>전문 업체</strong>에서 **점검 견적**을 받는 것이 안전합니다.</dd>
+        </div>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. 외제차 수리비를 국산차만큼 줄일 수 있는 방법이 있나요?</strong></dt>
+          <dd>네, 있습니다. **전문 업체**를 이용하고, **OEM 부품**이나 **애프터마켓 부품**을 활용하면 **수리 비용**을 크게 절감할 수 있습니다. 정식 서비스센터 대비 30~50% **할인**된 **가격**으로 정비가 가능합니다. 또한, **유튜브** 등에서 간단한 소모품 교환은 **내돈내산** DIY 팁을 참고하여 직접 하는 것도 좋은 방법입니다. <strong>신규</strong>로 **가입**하는 고객에게 **혜택**을 제공하는 **전문 업체**를 찾는 것도 좋습니다.</dd>
+        </div>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. 중고 외제차 보험료를 낮추는 팁이 있나요?</strong></dt>
+          <dd>네, 운전 경력이 짧은 **신규 가입자**라면 부모님 명의로 **가입** 후 운전 경력을 쌓거나, 연령 제한을 설정하여 **보험료**를 낮출 수 있습니다. 또한, **블랙박스** 설치나 **마일리지 특약** 등을 활용하여 **할인** 혜택을 받는 것도 좋습니다. **네이버**나 **구글**에서 **보험사 비교 견적**을 통해 가장 **저렴한곳**을 찾는 것이 중요합니다.</dd>
+        </div>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. 중고 외제차 구매 시 워런티(보증기간)는 필수인가요?</strong></dt>
+          <dd>워런티 기간이 남아있는 차량을 구매하는 것이 가장 안전합니다. 워런티 기간이 만료된 차량은 **예상치 못한 수리 비용**이 발생할 수 있으므로, **전문 업체**에서 꼼꼼하게 점검해야 합니다. 워런티 기간이 만료된 차량은 **수리비**를 감안하여 중고 **가격**이 저렴해지므로, **장단점**을 고려하여 선택해야 합니다.</dd>
+        </div>
+      </dl>
+    </section>
+    
+    <section id="contact">
+      <h2>중고차 유지비 전문가 상담</h2>
+      <p>중고 외제차 구매 전, **유지비**에 대한 정확한 **견적**과 **분석**이 필요합니다. 저희 **전문 업체**에 문의하시면 고객님의 운전 습관과 희망 모델에 따른 맞춤형 **유지비 예상** 시뮬레이션을 제공해 드립니다. 합리적인 **가격**으로 드림카를 만나보세요.</p>
+      <a href="mailto:contact@yourdomain.com" class="cta-button" aria-label="이메일로 전문가 상담 문의하기">이메일로 문의하기</a>
+      <p>저희는 **내돈내산** 오너들의 **후기**를 바탕으로 가장 현실적인 **유지비** 정보를 제공하며, **할인** 혜택이 가능한 **전문 업체**를 **추천**해 드립니다.</p>
+    </section>
+  </main>
+
+  <script>
+    // FAQ 아코디언 기능 (접기/펼치기)
+    document.querySelectorAll('.faq-item dt').forEach((dt) => {
+      dt.addEventListener('click', () => {
+        const expanded = dt.getAttribute('aria-expanded') === 'true' || false;
+        dt.setAttribute('aria-expanded', !expanded);
+        dt.classList.toggle('active');
+      });
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dt.click();
+        }
+      });
+    });
+  </script>
+  
